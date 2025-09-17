@@ -81,6 +81,9 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 
 ## Future Work
 
+- 여러 모델을 학습시킨 뒤 결과를 Ensemble하여 최종 결과를 출력하는 Ensemble Method 사용
+- GAN 기반 딥페이크 생성 및 대응 연구
+
 ## Contributing
 
 ## License
