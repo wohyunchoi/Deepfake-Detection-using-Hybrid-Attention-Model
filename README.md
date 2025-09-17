@@ -42,12 +42,13 @@
 
 ## Useful for
 - 인공지능 보안 연구자
-- 영상/이미지 진위 판별이 필요한 서비스
+- 이미지 진위 판별이 필요한 서비스
 
 ---
 
 ## Screenshots / Demo
 > 진행된 구현 부분만 우선 공개합니다. (추후 업데이트 예정)
+<img width="1386" height="607" alt="image" src="https://github.com/user-attachments/assets/ee386a79-8713-47ad-8826-7640320de607" />
 
 
 ---
