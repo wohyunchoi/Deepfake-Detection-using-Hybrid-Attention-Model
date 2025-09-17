@@ -79,6 +79,23 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 
 ## Setup and Running
 
+### a. Requirements 설치
+
+### b. 모델 다운로드 (Hugging Face)
+(Hugging Face에서 safetensors 모델 가중치 다운로드)
+
+### c. Web Localhost 실행
+
+### d. Database 연동
+
+## Developer / Researcher Guide
+
+### e. 모델 재학습시키기
+(PyTorch 기반 재학습 방법)
+
+### f. 모델 교체하기
+(새로운 safetensors 파일 교체 및 반영 방법)
+
 ## Future Work
 
 - 여러 모델을 학습시킨 뒤 결과를 Ensemble하여 최종 결과를 출력하는 Ensemble Method 사용
