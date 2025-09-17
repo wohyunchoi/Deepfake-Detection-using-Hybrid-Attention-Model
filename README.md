@@ -102,21 +102,15 @@
 
 - **학습 하이퍼파라미터**  
   - Optimizer: Adam  
-  - Learning rate: 0.0001  
+  - Learning rate: 0.0001
+  - Weight Decay : 0.00001
+  - Dropout Rate : Convolution Layer는 0.2, Fully Connected Layer는 0.5
   - Batch size: 16  
-  - Epochs: 50  
+  - Epochs: 50
   - Loss function: Binary Cross-Entropy
 
 - **학습 실행 방법**
-  
-```bash
-python train.py --dataset ./data --batch_size 16 --epochs 50 --lr 0.0001
-```
-
-* **팁**
-
-  * GPU 메모리 부족 시 batch size를 줄여서 학습 가능
-  * Data Augmentation 사용 가능: 랜덤 크롭, 회전, 밝기 변화
+(추가 예정)
  
 
 ---
