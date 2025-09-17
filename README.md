@@ -5,6 +5,7 @@
 - [Tech Stack](#tech-stack)
 - [Features](#features)
 - [Useful for](#useful-for)
+- [Model Architecture](#model-architecture)
 - [Screenshots / Demo](#screenshots--demo)
 - [Project Structure](#project-structure)
 - [Setup and Running](#setup-and-running)
@@ -46,13 +47,45 @@
 
 ---
 
+## Model Architecture
+
+이 프로젝트에서 사용한 **Hybrid Attention Model**은 Deepfake 영상의 특징을 효과적으로 추출하고 분류하기 위해 설계되었습니다. 모델의 전체 구조는 다음과 같습니다:
+
+<img width="1001" height="574" alt="image" src="https://github.com/user-attachments/assets/ebd09844-28d2-4d95-a57c-e7ec3253f6a6" />
+
+
+### 모델 구조 요약
+1. **Input Layer**  
+   - 입력 영상: `(Batch, 3, 224, 224)` (RGB 이미지, 224x224)
+
+2. **Feature Extractor (CNN Backbone)**  
+   - 여러 개의 Convolution + BatchNorm + ReLU 레이어로 영상 특징 추출  
+   - 중간 출력: 다양한 채널과 공간 정보 포함
+
+3. **Hybrid Attention Module**  
+   - **Spatial Attention**: 공간적 중요 영역 강조  
+   - **Channel Attention**: 채널별 중요한 특징 강조  
+   - CNN 특징 맵에 적용하여 영상 내 핵심 정보 부각
+
+4. **Fully Connected Layer**  
+   - Attention으로 강화된 특징을 flatten 후 Dense 레이어로 전달  
+   - 최종 출력: 1차원, Deepfake 여부를 Binary Classification
+
+5. **Output Layer**  
+   - Sigmoid 활성화 함수 사용  
+   - 출력 값: 0 (Real) / 1 (Fake)
+
+### 특징
+- CNN 기반 Feature Extractor + Attention 결합으로 성능 향상  
+- Spatial + Channel Attention의 Hybrid 구조로 다양한 영상 왜곡에도 강함
+
+---
+
 ## Screenshots / Demo
 > 진행된 구현 부분만 우선 공개합니다. (추후 업데이트 예정)
 <img width="1386" height="607" alt="image" src="https://github.com/user-attachments/assets/ee386a79-8713-47ad-8826-7640320de607" />
 
-
 ---
-
 
 ## Project Structure
 ```plaintext
@@ -77,6 +110,8 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 └── README.md
 ```
 
+---
+
 ## Setup and Running
 
 ### a. Requirements 설치
@@ -88,7 +123,7 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 
 ### d. Database 연동
 
-## Developer / Researcher Guide
+### Developer / Researcher Guide
 
 ### e. 모델 재학습시키기
 (PyTorch 기반 재학습 방법)
@@ -96,11 +131,17 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 ### f. 모델 교체하기
 (새로운 safetensors 파일 교체 및 반영 방법)
 
+---
+
 ## Future Work
 
 - 여러 모델을 학습시킨 뒤 결과를 Ensemble하여 최종 결과를 출력하는 Ensemble Method 사용
 - GAN 기반 딥페이크 생성 및 대응 연구
 
+---
+
 ## Contributing
+
+---
 
 ## License
