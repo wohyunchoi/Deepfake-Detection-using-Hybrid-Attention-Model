@@ -82,16 +82,12 @@
 
 모델 학습에 사용한 데이터셋 정보입니다.
 
-- **데이터셋 이름:** FaceForensics++  
-- **출처:** [https://github.com/ondyari/FaceForensics](https://github.com/ondyari/FaceForensics)  
+- **출처:** [https://www.kaggle.com/datasets/tusharpadhy/deepfake-dataset-merged]
 - **클래스:** Real / Fake  
 - **데이터 크기:**  
-  - Training: 720 영상  
-  - Validation: 140 영상  
-  - Test: 140 영상  
-- **전처리:**  
-  - 프레임 추출 후 224x224 RGBF 이미지로 리사이징  
-  - 정규화 (0~1 범위로 스케일링)
+  - Train : Fake(약 12만장)+Real(약 13만장) 총 약 25만장
+  - Valid : Fake(약 3만장)+Real(약 3만장) 총 약 6만장
+  - Test : Fake(250장) + Real(250장) / Fake(약 1.6만장)+Real(약 1.5만장) 총 약 3만장
 
 ---
 ## Training / How to Run Experiments
