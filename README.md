@@ -6,6 +6,9 @@
 - [Features](#features)
 - [Useful for](#useful-for)
 - [Model Architecture](#model-architecture)
+- [Data Set](#data-set)
+- [Training / How to Run Experiments](#training-how-to-Run-experiments)
+- [Results / Performance](#results-performance)
 - [Screenshots / Demo](#screenshots--demo)
 - [Project Structure](#project-structure)
 - [Setup and Running](#setup-and-running)
@@ -112,6 +115,13 @@
 - **학습 실행 방법**
 (추가 예정)
  
+---
+
+## Results / Performance
+
+(추가 예정)
+
+**설명**  
 
 ---
 ## Screenshots / Demo
@@ -119,26 +129,6 @@
 <img width="1386" height="607" alt="image" src="https://github.com/user-attachments/assets/ee386a79-8713-47ad-8826-7640320de607" />
 
 ---
-
-## Results / Performance
-
-모델 평가 및 성능 결과입니다.
-
-- **Metrics**
-  - Accuracy: 95.2%
-  - F1-score: 0.946
-  - Precision: 0.938
-  - Recall: 0.955
-
-- **Confusion Matrix**
-  - Real correctly classified: 134/140
-  - Fake correctly classified: 133/140
-
-- **ROC Curve**
-  - AUC: 0.97
-
-**설명**  
-Hybrid Attention 구조 덕분에 모델은 영상의 핵심 부분을 강조하며 Deepfake 여부를 정확히 분류합니다. 기존 CNN 단독 모델 대비 F1-score가 약 4~5% 향상되었습니다.
 
 ## Project Structure
 ```plaintext
