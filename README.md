@@ -66,7 +66,8 @@
 4. **Exit Flow**
    - Xception Exit Flow + CBAM  
    - 최종 특징 맵 생성
-
+5. **Fully Connected Layer**
+   
 **핵심 특징**
 - XceptionNet backbone으로 깊은 특징 추출
 - CBAM 모듈 삽입으로 공간 + 채널 Attention 결합
@@ -74,6 +75,50 @@
 
 ---
 
+## Dataset
+
+모델 학습에 사용한 데이터셋 정보입니다.
+
+- **데이터셋 이름:** FaceForensics++  
+- **출처:** [https://github.com/ondyari/FaceForensics](https://github.com/ondyari/FaceForensics)  
+- **클래스:** Real / Fake  
+- **데이터 크기:**  
+  - Training: 720 영상  
+  - Validation: 140 영상  
+  - Test: 140 영상  
+- **전처리:**  
+  - 프레임 추출 후 224x224 RGBF 이미지로 리사이징  
+  - 정규화 (0~1 범위로 스케일링)
+
+---
+## Training / How to Run Experiments
+
+모델 학습 환경 및 방법입니다.
+
+- **환경**  
+  - GPU: NVIDIA RTX 4060Ti (권장)  
+  - Pytorch 2.6.0+cu126, Python 3.13.1 (권장)
+  - 주요 라이브러리: `torchvision`, `pytorch'
+
+- **학습 하이퍼파라미터**  
+  - Optimizer: Adam  
+  - Learning rate: 0.0001  
+  - Batch size: 16  
+  - Epochs: 50  
+  - Loss function: Binary Cross-Entropy
+
+- **학습 실행 방법**
+bash
+python train.py --dataset ./data --batch_size 16 --epochs 50 --lr 0.0001
+
+
+* **팁**
+
+  * GPU 메모리 부족 시 batch size를 줄여서 학습 가능
+  * Data Augmentation 사용 가능: 랜덤 크롭, 회전, 밝기 변화
+ 
+
+---
 ## Screenshots / Demo
 > 진행된 구현 부분만 우선 공개합니다. (추후 업데이트 예정)
 <img width="1386" height="607" alt="image" src="https://github.com/user-attachments/assets/ee386a79-8713-47ad-8826-7640320de607" />
