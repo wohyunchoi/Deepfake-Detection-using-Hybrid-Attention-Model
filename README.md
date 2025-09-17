@@ -55,29 +55,22 @@
 
 
 ### 모델 구조 요약
-1. **Input Layer**  
-   - 입력 영상: `(Batch, 3, 224, 224)` (RGB 이미지, 224x224)
+1. **Input Layer**
+   - 입력 영상: `(Batch, 4, 224, 224)` (RGB 이미지)
+2. **Entry Flow**
+   - Xception Entry Flow + CBAM  
+   - 특징 추출 및 초기 Attention 적용
+3. **Middle Flow**
+   - Xception Middle Flow 수행 이후 CBAM 반복 블록  
+   - 채널/공간별 중요한 패턴 강조
+4. **Exit Flow**
+   - Xception Exit Flow + CBAM  
+   - 최종 특징 맵 생성
 
-2. **Feature Extractor (CNN Backbone)**  
-   - 여러 개의 Convolution + BatchNorm + ReLU 레이어로 영상 특징 추출  
-   - 중간 출력: 다양한 채널과 공간 정보 포함
-
-3. **Hybrid Attention Module**  
-   - **Spatial Attention**: 공간적 중요 영역 강조  
-   - **Channel Attention**: 채널별 중요한 특징 강조  
-   - CNN 특징 맵에 적용하여 영상 내 핵심 정보 부각
-
-4. **Fully Connected Layer**  
-   - Attention으로 강화된 특징을 flatten 후 Dense 레이어로 전달  
-   - 최종 출력: 1차원, Deepfake 여부를 Binary Classification
-
-5. **Output Layer**  
-   - Sigmoid 활성화 함수 사용  
-   - 출력 값: 0 (Real) / 1 (Fake)
-
-### 특징
-- CNN 기반 Feature Extractor + Attention 결합으로 성능 향상  
-- Spatial + Channel Attention의 Hybrid 구조로 다양한 영상 왜곡에도 강함
+**핵심 특징**
+- XceptionNet backbone으로 깊은 특징 추출
+- CBAM 모듈 삽입으로 공간 + 채널 Attention 결합
+- 기존 Xception 대비 Deepfake 검출 성능 향상
 
 ---
 
