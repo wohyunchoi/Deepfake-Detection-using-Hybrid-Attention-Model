@@ -105,8 +105,13 @@
   - Weight Decay : 0.00001
   - Dropout Rate : Convolution Layer는 0.2, Fully Connected Layer는 0.5
   - Batch size: 16  
-  - Epochs: 50
   - Loss function: Binary Cross-Entropy
+ 
+  - Sequential Fold-wise Training
+To better utilize the entire dataset
+The data were split into 5 folds, and a single model was trained sequentially on each fold for 10 epochs, resulting in a total of 50 epochs
+Unlike traditional 5-fold cross-validation, the model was not reinitialized between folds, allowing it to retain knowledge across them
+The final evaluation was conducted on a separate test set
 
 - **학습 실행 방법**
 (추가 예정)
