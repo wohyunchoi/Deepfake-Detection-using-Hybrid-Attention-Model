@@ -59,7 +59,7 @@
 
 ### 모델 구조 요약
 1. **Input Layer**
-   - 입력 영상: `(Batch, 4, 224, 224)` (RGB 이미지)
+   - 입력 영상: `(Batch, 4, 224, 224)` (RGBF 이미지)
 2. **Entry Flow**
    - Xception Entry Flow + CBAM  
    - 특징 추출 및 초기 Attention 적용
@@ -95,8 +95,8 @@
 모델 학습 환경 및 방법입니다.
 
 - **환경**  
-  - GPU: NVIDIA RTX 4060Ti (권장)  
-  - Pytorch 2.6.0+cu126, Python 3.13.1 (권장)
+  - GPU: NVIDIA RTX 4060Ti
+  - Pytorch 2.6.0+cu126, Python 3.13.1
   - 주요 라이브러리: torchvision, pytorch
 
 - **학습 하이퍼파라미터**  
