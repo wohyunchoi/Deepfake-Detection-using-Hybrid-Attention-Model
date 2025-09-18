@@ -64,7 +64,7 @@
    - Xception Entry Flow + CBAM  
    - 특징 추출 및 초기 Attention 적용
 3. **Middle Flow**
-   - Xception Middle Flow 수행 이후 CBAM 반복 블록  
+   - Xception Middle Flow 반복 수행 이후 CBAM 
    - 채널/공간별 중요한 패턴 강조
 4. **Exit Flow**
    - Xception Exit Flow + CBAM  
