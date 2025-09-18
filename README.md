@@ -129,6 +129,8 @@
 > 진행된 구현 부분만 우선 공개합니다. (추후 업데이트 예정)
 <img width="1386" height="607" alt="image" src="https://github.com/user-attachments/assets/ee386a79-8713-47ad-8826-7640320de607" />
 
+![시연real](https://github.com/user-attachments/assets/f773c27c-0894-46b6-ba4e-db59fae4a9b0)
+
 ---
 
 ## Project Structure
