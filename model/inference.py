@@ -7,28 +7,13 @@ import os
 from safetensors.torch import load_file
 
 from model import (
-    XceptionDeepfakeDetector, SwinDeepfakeDetector,
-    HybridDeepfakeDetector_XS, HybridDeepfakeDetector_ES,
-    XceptionCBAM_FFT, XceptionCBAM_FFT2,
+    XCFModel,
     rgb_fft_magnitude
 )
 
 
 def load_model(model_name, weight_path, device):
-    if model_name == "X":
-        model = XceptionDeepfakeDetector(num_classes=2)
-    elif model_name == "S":
-        model = SwinDeepfakeDetector(num_classes=2)
-    elif model_name == "XS":
-        model = HybridDeepfakeDetector_XS(num_classes=2)
-    elif model_name == "ES":
-        model = HybridDeepfakeDetector_ES(num_classes=2)
-    elif model_name == "XCF":
-        model = XceptionCBAM_FFT(num_classes=2)
-    elif model_name == "XCF2":
-        model = XceptionCBAM_FFT2(num_classes=2)
-    else:
-        raise ValueError(f"Unknown model: {model_name}")
+    model = XCFModel(num_classes=2).to(device)
 
     state_dict = load_file(weight_path)
     model.load_state_dict(state_dict)

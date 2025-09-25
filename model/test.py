@@ -10,13 +10,11 @@ from torch.amp import autocast
 import torch.nn.functional as F
 
 from model import (
-    XceptionDeepfakeDetector, SwinDeepfakeDetector,
-    HybridDeepfakeDetector_XS, HybridDeepfakeDetector_ES,
-    XceptionCBAM_FFT, XceptionCBAM_FFT2,
+    XCFModel,
     rgb_fft_magnitude
 )
 
-def test(model_class, model, test_loader, device):
+def test(model, test_loader, device):
     model.eval()
     all_preds, all_labels = [], []
     all_probs = []
@@ -25,8 +23,7 @@ def test(model_class, model, test_loader, device):
         for images, labels in test_loader:
             images, labels = images.to(device), labels.to(device)
 
-            if model_class == "XCF" or model_class == "XCF2":
-                images = rgb_fft_magnitude(images)
+            images = rgb_fft_magnitude(images)
 
             with autocast(device_type="cuda"):
                 outputs = model(images)
@@ -50,7 +47,6 @@ def test(model_class, model, test_loader, device):
 if __name__ == '__main__':
     # Argument Parse
     parser = argparse.ArgumentParser(description="Test Hybrid Deepfake Detector")
-    parser.add_argument("-m", "--model-class", type=str, default="X", choices=["X", "XS", "ES", "XCF", "XCF2"], help="Model class to use")
     parser.add_argument("-c", "--checkpoint", type=str, required=True, help="Path to model checkpoint (.safetensors)")
     args = parser.parse_args()
 
@@ -58,6 +54,9 @@ if __name__ == '__main__':
     BATCH_SIZE = 16
     DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     NUM_WORKERS = 4
+    LOG_DIR = f"logs"
+    os.makedirs(LOG_DIR, exist_ok=True)
+    log_file = os.path.join(LOG_DIR, f"test_log.txt")
 
     # Transform
     transform = transforms.Compose([
@@ -70,19 +69,7 @@ if __name__ == '__main__':
     test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory=True)
 
     # Model
-    model_class = args.model_class
-    if model_class == "X":
-        model = XceptionDeepfakeDetector(num_classes=2).to(DEVICE)
-    elif model_class == "XS":
-        model = HybridDeepfakeDetector_XS(num_classes=2).to(DEVICE)
-    elif model_class == "ES":
-        model = HybridDeepfakeDetector_ES(num_classes=2).to(DEVICE)
-    elif model_class == "XCF":
-        model = XceptionCBAM_FFT(num_classes=2).to(DEVICE)
-    elif model_class == "XCF2":
-        model = XceptionCBAM_FFT2(num_classes=2).to(DEVICE)
-    else:
-        model = XceptionDeepfakeDetector(num_classes=2).to(DEVICE)
+    model = XCFModel(num_classes=2).to(DEVICE)
 
     # Load checkpoint
     state_dict = load_file(args.checkpoint)
@@ -90,8 +77,8 @@ if __name__ == '__main__':
 
     # Evaluate
     ckpt = args.checkpoint
-    print(f"Test Start - Model:{model_class}, Checkpoint:{ckpt}")
-    acc, precision, recall, f1, auc, tp, tn, fp, fn = test(model_class, model, test_loader, DEVICE)
+    print(f"Test Start - Checkpoint:{ckpt}")
+    acc, precision, recall, f1, auc, tp, tn, fp, fn = test(model, test_loader, DEVICE)
 
     # Print results
     print("===== Test Results =====")
@@ -103,10 +90,8 @@ if __name__ == '__main__':
     print(f"Confusion Matrix -> TP: {tp}, TN: {tn}, FP: {fp}, FN: {fn}")
 
     # Save log
-    log_path = f"{args.model_class}_ckpt/test_log.txt"
-    os.makedirs(os.path.dirname(log_path), exist_ok=True)
-    if not os.path.exists(log_path):
-        with open(log_path, 'w') as f:
+    if not os.path.exists(log_file):
+        with open(log_file, 'w') as f:
             f.write("Accuracy, Precision, Recall, F1, AUC, TP, TN, FP, FN\n")
-    with open(log_path, 'a') as f:
+    with open(log_file, 'a') as f:
         f.write(f"{acc:.4f}, {precision:.4f}, {recall:.4f}, {f1:.4f}, {auc:.4f}, {tp}, {tn}, {fp}, {fn}\n")
