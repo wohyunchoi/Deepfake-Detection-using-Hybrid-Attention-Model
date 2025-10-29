@@ -10,7 +10,7 @@ class ImageResultModel(Base):
     __tablename__ = "image_results"
 
     id = Column(Integer, primary_key=True, index=True)
-    filename = Column(String, unique=True, index=True, nullable=False)
+    filename = Column(String, nullable=False)
     label = Column(String, nullable=False)
     confidence = Column(Float, nullable=False)
     uploaded_at = Column(DateTime, default=datetime.utcnow)

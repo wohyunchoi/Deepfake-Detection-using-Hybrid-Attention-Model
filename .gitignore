@@ -28,6 +28,7 @@ uploads/
 runs/
 outputs/
 checkpoints/
+logs/
 cache/
 tmp/
 
