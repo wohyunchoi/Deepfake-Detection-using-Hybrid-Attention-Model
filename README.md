@@ -94,6 +94,7 @@ venv\Scripts\activate
 # Mac/Linux
 source venv/bin/activate
 pip install -r requirements.txt
+```
 
 ### 2. Create virtual environment:
 ```bash
