@@ -105,16 +105,74 @@ source venv/bin/activate  # Mac/Linux
 
 ### 3. Dataset
 - Download dataset from Kaggle: [https://www.kaggle.com/datasets/tusharpadhy/deepfake-dataset-merged]
-- Place dataset in a suitable folder, e.g., backend/data/
+- Place dataset in a suitable folder, e.g., backend/dataset/
 
 ### 4. Training / Fine-tuning
 ```bash
-python train.py --data_path backend/data/ --epochs 50 --batch_size 16
-```
-- Adjust hyperparameters as needed
-- Trained model will be saved to:
+python -m venv venv
+venv\Scripts\activate  # Windows
+source venv/bin/activate  # Mac/Linux
 
-### 5. Optional: Logging results
+python train.py --dataset <your_dataset_path> --epochs <epochs> --batch_size <batch_size> --resume_fold <resume_fold> --resume_epoch <resume_epoch>
+```
+- Default parameters: "./dataset", "10", "16", None, None
+- Resume fold and resume epoch are required when you need to continue training after it has been interrupted.
+- When resuming training or fine-tuning an existing model, the corresponding checkpoint files are required to continue from the previous state — specifically, checkpoints/fold<fold>_epoch<epoch>.safetensors and checkpoints/fold<fold>_epoch<epoch>.pkl.
+- dataset directory and other directories related to training must be like this:
+```plaintext
+│
+└── backend/
+    ├── train.py              # Python code for train
+    ├── dataset/              # Default path, you can modify the dataset path
+    │   ├── train/
+    |   |   ├── Fake/
+    |   |   |   ├── a.jpg
+    |   |   |   ├── b.jpg
+    |   |   |   ├── ...
+    |   |   └── Real/
+    |   |       ├── a.jpg
+    |   |       ├── b.jpg
+    |   |       ├── ...
+    │   ├── valid/             # Optional, the dataset in this directory will be merged with the training dataset and split into 5 folds for sequential fold-wise training
+    |   |   ├── Fake/
+    |   |   |   ├── a.jpg
+    |   |   |   ├── b.jpg
+    |   |   |   ├── ...
+    |   |   └── Real/
+    |   |       ├── a.jpg
+    |   |       ├── b.jpg
+    |   |       ├── ...
+    │   └── test/
+    |       ├── Fake/
+    |       |   ├── a.jpg
+    |       |   ├── b.jpg
+    |       |   ├── ...
+    |       └── Real/
+    |       |   ├── a.jpg
+    |       |   ├── b.jpg
+    |       |   ├── ...
+    ├── logs/
+    |   ├── train_log.txt      # Training Information is logged into this file
+    |   └── test_log.txt       # Test Information is logged into this file
+    └── checkpoints/           
+        ├── fold<fold>_epoch<epoch>.safetensors  # Model weights
+        └── fold<fold>_epoch<epoch>.pkl      # Training metadata
+```
+- Epoch specifies the number of training epochs for each fold.
+- For example, if you set this value to 10 and use 5-fold fold-wise sequential training, the model will be trained for a total of 50 epochs.
+- Adjust hyperparameters as needed.
+- Training information(loss, validation accuracy/precision/recall/f1 etc.) is logged to a file located at logs/train_log.txt.
+- Trained model will be saved as checkpoints/fold<fold>_epoch<epoch>.safetensors.
+- Training metadata such as optimizer state, scaler state, fold indices will be saved as fold<fold>_epoch<epoch>.pkl.
+- After training is completed and use your trained model, rename the checkpoint file (e.g., fold<fold>_epoch<epoch>.safetensors) to model.safetensors and place it in backend/model/.
+
+### 5. Testing
+```bash
+python test.py --dataset <your_dataset_path> --checkpoint <your_checpoint_path e.g. checkpoints/fold5_epoch10.safetensors>
+```
+- Test information(accuracy, precision, recall, f1, AUC etc.) is logged to a file located at logs/test_log.txt.
+
+### 6. Optional: Database Logging
 - If PostgreSQL is configured, training metrics can be logged via crud.py.
  
 ---
@@ -138,8 +196,8 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 │
 ├── backend/
 │   ├── app.py                # FastAPI app entry point
-│   ├── model/                # Model files (.py, .safetensors)
-│   │   ├── model.py
+|   ├── model.py              # Model architecture used for inference
+│   ├── model/                # Model files (.safetensors)
 │   │   └── model.safetensors
 │   ├── database.py           # PostgreSQL setup
 │   ├── crud.py               
