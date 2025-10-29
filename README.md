@@ -120,10 +120,10 @@ python train.py --data_path backend/data/ --epochs 50 --batch_size 16
 ---
 
 ## Results / Performance
-**Accuracy:** 96.26%
-**Precision:** 98.69%
-**Recall:** 93.49%
-**AUC:** 0.9957%  
+- **Accuracy:** 96.26%
+- **Precision:** 98.69%
+- **Recall:** 93.49%
+- **AUC:** 0.9957%  
 
 ---
 
