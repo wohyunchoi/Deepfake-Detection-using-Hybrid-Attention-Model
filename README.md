@@ -1,6 +1,6 @@
 # Deepfake-Detection-using-Hybrid-Attention-Model
 
-## 목차 (Table of Contents)
+## Table of Contents
 - [Introduction](#introduction)
 - [Tech Stack](#tech-stack)
 - [Features](#features)
@@ -20,7 +20,7 @@
 
 ## Introduction
 
-- (소개영상 추후 업데이트 예정)
+- (The introduction video will be updated later.)
 - This project aims to automatically detect deepfake images using a deep learning model trained on public datasets.
 It provides an interactive web interface where users can upload an image and receive a classification result ("Real" or "Fake") with confidence visualization.
 
@@ -186,7 +186,7 @@ python test.py --dataset <your_dataset_path> --checkpoint <your_checpoint_path e
 ---
 
 ## Screenshots / Demo
-> (시연영상 및 Demo 추가 예정)
+> (Screenshots and demonstration videos will be added.)
 
 ---
 
