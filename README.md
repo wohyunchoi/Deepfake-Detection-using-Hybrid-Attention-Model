@@ -164,7 +164,7 @@ python train.py --dataset <your_dataset_path> --epochs <epochs> --batch_size <ba
 - Training information(loss, validation accuracy/precision/recall/f1 etc.) is logged to a file located at logs/train_log.txt.
 - Trained model will be saved as checkpoints/fold<fold>_epoch<epoch>.safetensors.
 - Training metadata such as optimizer state, scaler state, fold indices will be saved as fold<fold>_epoch<epoch>.pkl.
-- After training is completed and use your trained model, rename the checkpoint file (e.g., fold<fold>_epoch<epoch>.safetensors) to model.safetensors and place it in backend/model/.
+- After training is completed and to use your trained model, rename the checkpoint file (e.g., fold<fold>_epoch<epoch>.safetensors) to model.safetensors and place it in backend/model/.
 
 ### 5. Testing
 ```bash
