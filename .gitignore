@@ -1,0 +1,81 @@
+# ======================
+# Python & FastAPI backend
+# ======================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.env.bak/
+.venv/
+
+# Model files
+*.pt
+*.pth
+*.safetensors
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# Uploads and output folders
+uploads/
+runs/
+outputs/
+checkpoints/
+cache/
+tmp/
+
+# ======================
+# Node.js / React frontend
+# ======================
+
+# Dependencies
+node_modules/
+
+# Build outputs
+build/
+dist/
+.cache/
+
+# Env files (API keys, etc.)
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.production.local
+frontend/.env.test.local
+
+# ======================
+# System files
+# ======================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VSCode / IDE
+.vscode/
+.idea/
+*.iml
+
+# ======================
+# Custom project-specific
+# ======================
+
+# Model folder
+backend/model/model.safetensors
+
+# Python cache folders
+backend/__pycache__/
+backend/*/__pycache__/
