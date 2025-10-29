@@ -82,7 +82,7 @@ This section is intended for developers or researchers who want to **train or fi
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/<your-username>/Deepfake-Detection-using-Hybrid-Attention-Model.git
+git clone https://github.com/wohyunchoi/Deepfake-Detection-using-Hybrid-Attention-Model.git
 ```
 
 ### 2. Prepare the environment
@@ -162,7 +162,7 @@ This section explains how to **set up and run the project** using the pre-traine
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/<your-username>/Deepfake-Detection-using-Hybrid-Attention-Model.git
+git clone https://github.com/wohyunchoi/Deepfake-Detection-using-Hybrid-Attention-Model.git
 ```
 
 ### 2. Create virtual environment and install dependencies
