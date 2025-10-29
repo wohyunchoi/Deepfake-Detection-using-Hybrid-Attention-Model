@@ -1,0 +1,1 @@
+Put your model here. File name must be "model.safetensors". (backend/model/model.safetensors)

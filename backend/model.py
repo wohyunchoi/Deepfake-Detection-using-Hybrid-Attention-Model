@@ -58,13 +58,11 @@ class SeparableConv2d(nn.Module):
         return x
     
 class Block(nn.Module):
-    def __init__(self, in_filters, out_filters, reps, stride=1, grow_first=False, relu_first=False, grow_last=False, pooling_flag=False, dropout_rate=0.2):
+    def __init__(self, in_filters, out_filters, reps, stride=1, grow_first=True, dropout_rate=0.2):
         super(Block, self).__init__()
         layers = []
         filters = in_filters
         if grow_first:
-            if relu_first:
-                layers.append(nn.ReLU())
             layers.append(SeparableConv2d(in_filters, out_filters))
             layers.append(nn.BatchNorm2d(out_filters))
             filters = out_filters
@@ -74,16 +72,13 @@ class Block(nn.Module):
             layers.append(SeparableConv2d(filters, filters))
             layers.append(nn.BatchNorm2d(filters))
 
-        if grow_last:
-            layers.append(nn.ReLU())
+        if not grow_first:
             layers.append(SeparableConv2d(in_filters, out_filters))
             layers.append(nn.BatchNorm2d(out_filters))
 
         self.rep = nn.Sequential(*layers)
-        if pooling_flag:
-            self.pool = nn.MaxPool2d(3, stride, 1)
-        else:
-            self.pool = nn.Identity()
+        self.relu = nn.ReLU()
+        self.pool = nn.MaxPool2d(3, stride, 1)
         self.dropout = nn.Dropout2d(dropout_rate)
 
         if stride != 1 or in_filters != out_filters:
@@ -101,10 +96,10 @@ class Block(nn.Module):
             res = self.skip(res)
             res = self.skipbn(res)
         return x + res
-    
-class XCFModel(nn.Module):
+
+class DeepfakeDetector(nn.Module):
     def __init__(self, num_classes=2, dropout_rate=0.2):
-        super(XCFModel, self).__init__()
+        super(DeepfakeDetector, self).__init__()
 
         self.entry = nn.Sequential(
             nn.Conv2d(4, 32, 3, stride=2, bias=False),
@@ -116,18 +111,18 @@ class XCFModel(nn.Module):
             nn.Dropout2d(dropout_rate)
         )
 
-        self.block1 = Block(64, 128, 1, stride=2, grow_first=True, relu_first=False, pooling_flag=True, dropout_rate=dropout_rate)
-        self.block2 = Block(128, 256, 1, stride=2, grow_first=True, relu_first=True, pooling_flag=True, dropout_rate=dropout_rate)
-        self.block3 = Block(256, 728, 1, stride=2, grow_first=True, relu_first=True, pooling_flag=True, dropout_rate=dropout_rate)
+        self.block1 = Block(64, 128, 2, stride=2, grow_first=True, dropout_rate=dropout_rate)
+        self.block2 = Block(128, 256, 2, stride=2, grow_first=True, dropout_rate=dropout_rate)
+        self.block3 = Block(256, 728, 2, stride=2, grow_first=True, dropout_rate=dropout_rate)
         self.cbam3 = CBAM(728)
 
         self.middle = nn.Sequential(
-            *[Block(728, 728, 3, grow_first=False, pooling_flag=False, dropout_rate=dropout_rate) for _ in range(4)]
+            *[Block(728, 728, 3, dropout_rate=dropout_rate) for _ in range(4)]
         )
         self.cbam_middle = CBAM(728)
 
         self.exit = nn.Sequential(
-            Block(728, 1024, 1, stride=2, grow_first=False, pooling_flag=True, grow_last=True, dropout_rate=dropout_rate),
+            Block(728, 1024, 2, stride=2, grow_first=False, dropout_rate=dropout_rate),
             SeparableConv2d(1024, 1536),
             nn.BatchNorm2d(1536),
             nn.ReLU(),
