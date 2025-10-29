@@ -20,10 +20,10 @@
 
 ## Introduction
 
-(소개영상 추후 업데이트 예정)
-
-This project aims to automatically detect deepfake images using a deep learning model trained on public datasets.
+- (소개영상 추후 업데이트 예정)
+- This project aims to automatically detect deepfake images using a deep learning model trained on public datasets.
 It provides an interactive web interface where users can upload an image and receive a classification result ("Real" or "Fake") with confidence visualization.
+
 ---
 
 ## Tech Stack
