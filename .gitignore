@@ -51,6 +51,13 @@ frontend/.env.production.local
 frontend/.env.test.local
 
 # ======================
+# PostgreSQL DB
+# ======================
+
+# Env Files
+.env
+
+# ======================
 # System files
 # ======================
 
