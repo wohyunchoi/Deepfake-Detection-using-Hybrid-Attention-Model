@@ -96,13 +96,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Create virtual environment:
-```bash
-python -m venv venv
-venv\Scripts\activate  # Windows
-source venv/bin/activate  # Mac/Linux
-```
-
 ### 3. Dataset
 - Download dataset from Kaggle: [https://www.kaggle.com/datasets/tusharpadhy/deepfake-dataset-merged]
 - Place dataset in a suitable folder, e.g., backend/dataset/
