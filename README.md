@@ -64,7 +64,7 @@ The model (DeepfakeDetector) integrates:
 - Fully connected classifier for binary output (Real / Fake)
 
 ### Architecture Summary
-<img width="1920" height="1080" alt="Untitled design" src="https://github.com/user-attachments/assets/48de1338-bc50-4973-aa17-808726773a69" />
+<img width="1920" height="1080" alt="+" src="https://github.com/user-attachments/assets/755b8e26-908f-4086-81c7-5b31090a9391" />
 
 ---
 
