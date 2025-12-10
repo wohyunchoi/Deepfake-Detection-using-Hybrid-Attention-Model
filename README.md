@@ -179,7 +179,13 @@ python test.py --dataset <your_dataset_path> --checkpoint <your_checpoint_path e
 ---
 
 ## Screenshots / Demo
-> (Screenshots and demonstration videos will be added.)
+*All face images shown below are sampled from the Kaggle dataset referenced in the "Training / How to Run Experiments" section (CC0 licensed).*
+### Screenshots
+![1](https://github.com/user-attachments/assets/ec94cfad-d966-4164-8b38-851983de3605)
+![4](https://github.com/user-attachments/assets/fadf0d85-be68-4763-8c6a-a27a2fb78d51)
+![6](https://github.com/user-attachments/assets/8a5e11f8-e58d-48d5-a8ee-4bcc6178a8a9)
+### Demo
+
 
 ---
 
@@ -193,8 +199,10 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 │   ├── model/                # Model files (.safetensors)
 │   │   └── model.safetensors
 │   ├── database.py           # PostgreSQL setup
-│   ├── crud.py               
-│   └── schemas.py            
+│   ├── crud.py
+│   ├── schemas.py
+│   ├── requirements.txt      # Python dependencies
+│   └── .env                  # Environment variables (created during setup; not included in the repo)
 │
 ├── frontend/
 │   ├── src/                  # React component
@@ -203,14 +211,13 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 │   ├── public/
 │   └── package.json
 │
-├── .env
 └── README.md
 ```
 
 ---
 
 ## Setup and Running
-This section explains how to **set up and run the project** using the pre-trained model.
+This section explains how to **set up and run the project on localhost** using the pre-trained model.
 
 ### 1. Clone the repository
 ```bash
@@ -233,7 +240,8 @@ pip install -r requirements.txt
 ```
 
 ### 3. Configure PostgreSQL database
-#### 1. Create PostgreSQL database:
+PostgreSQL must be installed in your local environment before proceeding with this step.
+#### 1. Creating a PostgreSQL database (using psql) for detection results:
 ```sql
 CREATE DATABASE deepfake_db;
 ```
@@ -243,7 +251,7 @@ DATABASE_URL=postgresql://username:password@localhost:5432/deepfake_db
 ```
 - Replace username, password, localhost, and deepfake_db with your PostgreSQL settings.
 
-### 4. Run FastAPI backend
+### 3. Run FastAPI backend
 ```bash
 cd backend
 uvicorn app:app --reload
@@ -251,7 +259,7 @@ uvicorn app:app --reload
 - Server URL: http://127.0.0.1:8000
 - /predict endpoint available for image upload
 
-### 5. Run React frontend
+### 4. Run React frontend
 ```bash
 cd frontend
 npm install
