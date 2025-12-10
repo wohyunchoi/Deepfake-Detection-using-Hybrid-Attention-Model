@@ -185,7 +185,7 @@ python test.py --dataset <your_dataset_path> --checkpoint <your_checpoint_path e
 ![4](https://github.com/user-attachments/assets/fadf0d85-be68-4763-8c6a-a27a2fb78d51)
 ![6](https://github.com/user-attachments/assets/8a5e11f8-e58d-48d5-a8ee-4bcc6178a8a9)
 ### Demo
-[▶ Watch Demo (MP4)](./assets/demo.mp4)
+[▶ Watch Demo (MP4)](https://raw.githubusercontent.com/wohyunchoi/Deepfake-Detection-using-Hybrid-Attention-Model/main/assets/demo.mp4)
 
 ---
 
