@@ -1,0 +1,23 @@
+# === Core Backend Framework ===
+fastapi
+uvicorn[standard]
+
+# === Deep Learning & Model Loading ===
+torch
+torchvision
+timm
+safetensors
+
+# === Database ===
+SQLAlchemy
+psycopg2-binary
+python-dotenv
+
+# === Utilities ===
+numpy
+scikit-learn
+Pillow
+
+# === File Upload / API Helpers ===
+python-multipart
+requests
