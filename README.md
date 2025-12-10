@@ -20,7 +20,7 @@
 
 ## Introduction
 
-- (The introduction video will be updated later.)
+- A short introduction to DeepfakeDetector: [Watch Introduction Video](https://www.youtube.com/watch?v=RDHH1O1cCPI)
 - This project aims to automatically detect deepfake images using a deep learning model trained on public datasets.
 It provides an interactive web interface where users can upload an image and receive a classification result ("Real" or "Fake") with confidence visualization.
 
@@ -185,7 +185,7 @@ python test.py --dataset <your_dataset_path> --checkpoint <your_checpoint_path e
 ![4](https://github.com/user-attachments/assets/fadf0d85-be68-4763-8c6a-a27a2fb78d51)
 ![6](https://github.com/user-attachments/assets/8a5e11f8-e58d-48d5-a8ee-4bcc6178a8a9)
 ### Demo
-[Watch in Release](https://github.com/wohyunchoi/Deepfake-Detection-using-Hybrid-Attention-Model/releases/latest)
+[Watch Demo Video](https://www.youtube.com/watch?v=3a5ycMG4dro)
 
 ---
 
