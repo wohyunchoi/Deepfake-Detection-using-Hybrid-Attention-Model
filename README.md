@@ -217,14 +217,19 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 ---
 
 ## Setup and Running
-This section explains how to **set up and run the project on localhost** using the pre-trained model.
+This project can be run in two ways:
+1. Running locally on your machine (recommended for developers)
+2. Connecting to a temporary live demo server (used only during presentations)
 
-### 1. Clone the repository
+### Running on Localhost (Full Local Setup)
+Follow these steps if you want to run both the backend (FastAPI) and frontend (React) on your own machine.
+
+#### 1. Clone the repository
 ```bash
 git clone https://github.com/wohyunchoi/Deepfake-Detection-using-Hybrid-Attention-Model.git
 ```
 
-### 2. Create virtual environment and install dependencies
+#### 2. Create virtual environment and install dependencies
 ```bash
 cd backend
 
@@ -239,19 +244,19 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 3. Configure PostgreSQL database
+#### 3. Configure PostgreSQL database
 PostgreSQL must be installed in your local environment before proceeding with this step.
-#### 1. Creating a PostgreSQL database (using psql) for detection results:
+##### 3-1. Creating a PostgreSQL database (using psql) for detection results:
 ```sql
 CREATE DATABASE deepfake_db;
 ```
-#### 2. Create .env in backend/:
+##### 3-2. Create .env in backend/:
 ```.env
 DATABASE_URL=postgresql://username:password@localhost:5432/deepfake_db
 ```
 - Replace username, password, localhost, and deepfake_db with your PostgreSQL settings.
 
-### 3. Run FastAPI backend
+#### 4. Run FastAPI backend
 ```bash
 cd backend
 uvicorn app:app --reload
@@ -259,7 +264,7 @@ uvicorn app:app --reload
 - Server URL: http://127.0.0.1:8000
 - /predict endpoint available for image upload
 
-### 4. Run React frontend
+#### 5. Run React frontend
 ```bash
 cd frontend
 npm install
@@ -268,6 +273,20 @@ npm run start
 - Open browser at: http://localhost:5173
 - Drag & Drop images to see predictions and confidence bars
 - Note: You can skip training and use the pre-trained model at backend/model/model.safetensors.
+
+### Live Demo (Temporary Server)
+**Note:** The live demo is only available during scheduled presentations, so the link is not active 24/7.
+
+When the demo is active, you can access it here:
+
+Live Demo URL: *(the link will be added later.)*
+
+During the presentation, this link allows you to:
+- Upload test images
+- Run deepfake detection through the backend model
+- View real-time results
+
+If the link is offline, please use the local setup above.
 
 ---
 
