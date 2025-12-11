@@ -218,6 +218,7 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 
 ## Setup and Running
 Follow these steps if you want to run both the backend (FastAPI) and frontend (React) on your own machine.
+
 **Note:** The following software must be installed before proceeding:
 - **Node.js** Official Website: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)  
 - **Python** Official Website: [https://www.python.org/downloads/](https://www.python.org/downloads/)  
