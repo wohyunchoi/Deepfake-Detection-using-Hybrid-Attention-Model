@@ -256,7 +256,7 @@ DATABASE_URL=postgresql://username:password@localhost:5432/deepfake_db
 
 #### 4. Prepare the model to use
 - Note: You can skip training and use the pre-trained model at backend/model/model.safetensors.
-- Download pre-trained model: [Google Drive Link](https://drive.google.com/file/d/1XXFOfYR1F206crgN4DnQ4opcU_9_tKJo/view?usp=drive_link)
+- Download pre-trained model: [Google Drive Link](https://drive.google.com/file/d/1V-05eSEm0_1f4T9w0_ZrDd_d2rHmcCO5/view?usp=drive_link)
 
 #### 5. Run FastAPI backend
 ```bash
