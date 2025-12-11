@@ -241,6 +241,8 @@ pip install -r requirements.txt
 
 #### 3. Configure PostgreSQL database
 PostgreSQL must be installed in your local environment before proceeding with this step.
+
+You can download it from the official site: [https://www.postgresql.org/download/](https://www.postgresql.org/download/)
 ##### 3-1. Creating a PostgreSQL database (using psql) for detection results:
 ```sql
 CREATE DATABASE deepfake_db;
