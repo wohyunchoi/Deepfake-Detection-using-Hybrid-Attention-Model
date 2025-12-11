@@ -309,3 +309,4 @@ If the link is offline, please use the local setup above.
 ---
 
 ## License
+This project is licensed under the MIT License.
