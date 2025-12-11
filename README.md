@@ -226,6 +226,7 @@ git clone https://github.com/wohyunchoi/Deepfake-Detection-using-Hybrid-Attentio
 
 #### 2. Create virtual environment and install dependencies
 ```bash
+# move to backend/
 cd backend
 
 # Windows
@@ -255,7 +256,12 @@ DATABASE_URL=postgresql://username:password@localhost:5432/deepfake_db
 
 #### 4. Run FastAPI backend
 ```bash
+# move to backend/
 cd backend
+
+# activate python venv
+venv\Scripts\activate
+
 uvicorn app:app --reload
 ```
 - Server URL: http://127.0.0.1:8000
@@ -263,7 +269,9 @@ uvicorn app:app --reload
 
 #### 5. Run React frontend
 ```bash
+# move to frontend/
 cd frontend
+
 npm install
 npm run start
 ```
