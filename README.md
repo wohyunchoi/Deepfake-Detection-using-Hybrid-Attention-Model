@@ -218,6 +218,10 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 
 ## Setup and Running
 Follow these steps if you want to run both the backend (FastAPI) and frontend (React) on your own machine.
+**Note:** The following software must be installed before proceeding:
+- **Node.js** Official Website: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)  
+- **Python** Official Website: [https://www.python.org/downloads/](https://www.python.org/downloads/)  
+- **PostgreSQL** Official Website: [https://www.postgresql.org/download/](https://www.postgresql.org/download/)
 
 #### 1. Clone the repository
 ```bash
@@ -225,6 +229,7 @@ git clone https://github.com/wohyunchoi/Deepfake-Detection-using-Hybrid-Attentio
 ```
 
 #### 2. Create virtual environment and install dependencies
+Python 3.10+ must be installed in your local environment before proceeding with this step.
 ```bash
 # move to backend/
 cd backend
@@ -243,7 +248,6 @@ pip install -r requirements.txt
 #### 3. Configure PostgreSQL database
 PostgreSQL must be installed in your local environment before proceeding with this step.
 
-You can download it from the official site: [https://www.postgresql.org/download/](https://www.postgresql.org/download/)
 ##### 3-1. Creating a PostgreSQL database (using psql) for detection results:
 ```sql
 CREATE DATABASE deepfake_db;
@@ -272,6 +276,7 @@ uvicorn app:app --reload
 - /predict endpoint available for image upload
 
 #### 6. Run React frontend
+Node.js must be installed in your local environment before proceeding with this step.
 ```bash
 # move to frontend/
 cd frontend
