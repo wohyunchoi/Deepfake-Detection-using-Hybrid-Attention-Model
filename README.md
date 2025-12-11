@@ -301,6 +301,11 @@ If the link is offline, please use the local setup above.
 
 ## Contributing
 
+| Name | Student ID | Major |
+|------|-------------|--------|
+| Choi Hyunwoo | 202011385 | CS |
+| Baek Wooyang | 202214207 | CS |
+
 ---
 
 ## License
