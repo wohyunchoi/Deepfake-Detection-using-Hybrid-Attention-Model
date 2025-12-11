@@ -217,11 +217,6 @@ Deepfake-Detection-using-Hybrid-Attention-Model/
 ---
 
 ## Setup and Running
-This project can be run in two ways:
-1. Running locally on your machine (recommended for developers)
-2. Connecting to a temporary live demo server (used only during presentations)
-
-### Running on Localhost (Full Local Setup)
 Follow these steps if you want to run both the backend (FastAPI) and frontend (React) on your own machine.
 
 #### 1. Clone the repository
@@ -275,19 +270,6 @@ npm run start
 - Note: You can skip training and use the pre-trained model at backend/model/model.safetensors.
 - Download pre-trained model: [Google Drive Link](https://drive.google.com/file/d/1XXFOfYR1F206crgN4DnQ4opcU_9_tKJo/view?usp=drive_link)
 
-### Live Demo (Temporary Server)
-**Note:** The live demo is only available during scheduled presentations, so the link is not active 24/7.
-
-When the demo is active, you can access it here:
-
-Live Demo URL: *(the link will be added later.)*
-
-During the presentation, this link allows you to:
-- Upload test images
-- Run deepfake detection through the backend model
-- View real-time results
-
-If the link is offline, please use the local setup above.
 
 ---
 
