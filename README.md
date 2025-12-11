@@ -273,6 +273,7 @@ npm run start
 - Open browser at: http://localhost:5173
 - Drag & Drop images to see predictions and confidence bars
 - Note: You can skip training and use the pre-trained model at backend/model/model.safetensors.
+- Download pre-trained model: [Google Drive Link](https://drive.google.com/file/d/1XXFOfYR1F206crgN4DnQ4opcU_9_tKJo/view?usp=drive_link)
 
 ### Live Demo (Temporary Server)
 **Note:** The live demo is only available during scheduled presentations, so the link is not active 24/7.
